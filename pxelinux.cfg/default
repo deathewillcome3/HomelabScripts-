@@ -1,0 +1,29 @@
+default menu.c32
+prompt 0
+timeout 150
+ONTIMEOUT Ubuntu
+
+MENU TITLE PXE(Pixie) Boot Server
+
+LABEL local
+	MENU LABEL Boot local hard drive
+	LOCALBOOT 0
+
+LABEL serverInstall
+	MENU LABEL Server OS Installs
+	KERNEL menu.c32
+	APPEND pxelinux.cfg/serverInstall
+
+LABEL clientInstall
+	MENU LABEL Client OS Installs
+	KERNEL menu.c32
+	APPEND pxelinux.cfg/clientInstall
+
+LABEL tools
+	MENU LABEL Diagnostic Tools
+	KERNEL menu.c32
+	APPEND pxelinux.cfg/tools
+LABEL Ubuntu
+	MENU LABEL Ubuntu18 
+	KERNEL images/Ubuntu18/linux
+	APPEND auto=true hostname=server url=http://10.16.128.130/Ubuntu/preseed/local-sources.seed initrd=images/Ubuntu18/initrd.gz

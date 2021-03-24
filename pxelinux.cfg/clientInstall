@@ -1,0 +1,28 @@
+default menu.c32
+prompt 0
+timeout 10
+ONTIMEOUT Ubuntu
+
+MENU TITLE serverInstall
+
+LABEL Main Menu
+	MENU LABEL Main Menu
+	KERNEL menu.c32 
+	APPEND pxelinux.cfg/default
+
+LABEL Ubuntu
+	MENU LABEL Ubuntu
+	KERNEL images/Ubuntu/vmlinuz 
+	INITRD images/Ubuntu/initrd 
+	APPEND root=/dev/ram0 ramdisk_size=1500000 ip=dhcp url=http://releases.ubuntu.com/20.10/ubuntu-20.10-live-server-amd64.iso
+
+LABEL Arch
+	MENU LABEL Arch
+	KERNEL menu.c32 
+	APPEND pxelinux.cfg/default
+
+LABEL Windows
+	MENU LABEL Windows
+	KERNEL menu.c32 
+	APPEND pxelinux.cfg/default
+

@@ -1,0 +1,23 @@
+MENU TITLE serverInstall
+
+LABEL Main Menu
+	MENU LABEL Main Menu
+	KERNEL menu.c32 
+	APPEND pxelinux.cfg/default
+
+LABEL Clonezilla
+	MENU LABEL Clonezilla
+	KERNEL images/Clonezilla/vmlinuz 
+	INITRD images/Clonezilla/initrd.img
+	APPEND boot=live username=user union=overlay config components quiet noswap edd=on nomodeset nodmraid locales= keyboard-layouts= ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_live_batch=no net.ifnames=0 nosplash noprompt fetch=http://10.16.128.130/Clonezilla/filesystem.squashfs
+
+LABEL Arch
+	MENU LABEL Arch
+	KERNEL menu.c32 
+	APPEND pxelinux.cfg/default
+
+LABEL Windows
+	MENU LABEL Windows
+	KERNEL menu.c32 
+	APPEND pxelinux.cfg/default
+

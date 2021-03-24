@@ -1,0 +1,65 @@
+d-i live-installer/net-image string http://10.16.128.30/Ubuntu/casper/filesystem.squashfs
+
+## Unattended installation
+d-i auto-install/enable boolean true
+d-i debconf/priority select critical
+
+#localization
+d-i debian-installer/locale string en_US.UTF-8
+d-i console-setup/ask_detect boolean false
+d-i keyboard-configuration/xkb-keymap select US
+d-i keyboard-configuration/variantcode QWERTY
+
+#Network Config
+d-i netcfg/choose_interface select auto
+d-i netcfg/hostname string hannibal
+d-i netcfg/dhcp_timeout string 120
+
+#Package config
+d-i hw-detect/load_firmware boolean true
+
+#User Account
+d-i passwd/root-login boolean false
+d-i passwd/user-fullname string hannibal
+d-i passwd/username string hannibal
+d-i passwd/user-password password a3b2f5c4
+d-i passwd/user-password-again password a3b2f5c4
+
+#Clocks
+d-i clock-setup/utc boolean true
+d-i time/zone string America/New York
+d-i clock-setup/ntp boolean true
+
+#Disk
+d-i partman-auto/method string lvm
+d-i partman-lvm/device_remove_lvm boolean true
+d-i partman_lvm/confirm boolean true
+d-i partman-lvm/confirm_nooverwrite boolean true
+d-i partman-auto-lvm/guided_size string max
+d-i partman-auto-lvm/new_vg_name string vg-server
+d-i partman-auto/choose_recipe select multi
+
+#Partitioning
+d-i partman-partitioning/confirm_write_new_label boolean true
+d-i partman/choose_partition select finish
+d-i partman/confirm boolean true
+d-i partman/confirm_nooverwrite boolean true
+
+d-i partman-partitioning/confirm_write_new_label boolean true
+d-i partman/choose_partition select finish
+d-i partman/confirm boolean true
+d-i partman/confirm_nooverwrite boolean true
+
+#Post-Install Configuration
+d-i pkgsel/update-policy select unattended-upgrades
+d-i grub-installer/only_debian boolean true
+d-i grub-installer/with_other_os boolean true
+
+#Packge Configuration
+d-i apt-setup/extras boolean true
+d-i apt-setup/universe boolean true
+d-i apt-setup/non-free boolean true
+
+d-i pkgsel/language-packs multiselect en
+
+

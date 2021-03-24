@@ -1,0 +1,15 @@
+---
+ - name: Open UFW ports
+   become: yes
+   ufw: 
+    rule: allow
+    proto: tcp
+    port: '6443'
+   ufw: 
+    rule: allow
+    proto: tcp
+    port: '10250:10252'
+   ufw:
+    rule: allow 
+    proto: tcp
+    port: '2379:2390'

@@ -1,0 +1,22 @@
+MENU TITLE serverInstall
+
+LABEL Main Menu
+	MENU LABEL Main Menu
+	KERNEL menu.c32 
+	APPEND pxelinux.cfg/default
+
+LABEL Debian Server
+	MENU LABEL Debian Server
+	KERNEL images/Debian/debian-installer/amd64/boot-screens/vesamenu.c32
+	APPEND pxelinux.cfg/default
+
+LABEL Cent OS Server
+	MENU LABEL Cent OS Server
+	KERNEL images/CentOS/vmlinuz
+	APPEND initrd=images/CentOS/initrd.img ip=dhcp inst.repo=http://10.16.128.11/CentOS inst.ks=http://10.16.128.11/scripts/anaconda-ks.cfg
+
+LABEL Fedora Server
+	MENU LABEL Fedora OS
+	KERNEL menu.c32 
+	APPEND pxelinux.cfg/default
+
